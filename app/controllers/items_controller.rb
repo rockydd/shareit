@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
     @items = Item.all
+    tag_cloud
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,5 +82,10 @@ class ItemsController < ApplicationController
       format.html { redirect_to(items_url) }
       format.xml  { head :ok }
     end
+  end
+
+private
+  def tag_cloud
+    @tags = Item.tag_counts
   end
 end

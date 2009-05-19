@@ -9,7 +9,6 @@
 <% @items.each do |item| %>
   <tr>
     <td><%=h item.name %></td>
-    <td><%=h item.description %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -18,5 +17,11 @@
 </table>
 
 <br />
+
+<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+<% end %>
+
+<br/>
 
 <%= link_to 'New item', new_item_path %>

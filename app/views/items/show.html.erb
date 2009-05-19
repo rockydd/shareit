@@ -5,9 +5,17 @@
 
 <p>
   <b>Description:</b>
-  <%=h @item.description %>
+  <div class="description">
+    <%=h @item.description %>
+  </div>
 </p>
 
+<p>
+  <b>tagged with:</b>
+  <% for tag in @item.tags %>
+  <%= tag.name %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
