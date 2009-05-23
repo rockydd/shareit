@@ -52,9 +52,29 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+#main{
+  float: left;
+}
+.item_list{
+  width: 100%;
+}
+.item_list li {
+  display: block;
+}
+.item {
+  float: left;
+}
+.thumb{
+  width: 150px;
+  height: 150px;
+}
 .description {
   background-color: #FFFF99;
   width: 400px;
+}
+
+#tag_cloud {
+  float: left;
 }
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }

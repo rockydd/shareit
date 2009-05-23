@@ -1,6 +1,6 @@
 <h1>New item</h1>
 
-<% form_for(@item) do |f| %>
+<% form_for(@item, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -11,6 +11,9 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </p>
+
+  <p>
+    <%= f.file_field :attachment %>
   <p>
     <%= f.label 'Tag List (Delimiter = ,)' %><br/>
     <%= f.text_field :tag_list %>

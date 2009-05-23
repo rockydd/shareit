@@ -84,6 +84,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def tag
+    @items = Item.find_tagged_with(params[:id])
+    tag_cloud
+
+    respond_to do |format|
+      format.html { render :action => :index} # index.html.erb
+      format.xml  { render :xml => @items }
+    end
+
+  end
 private
   def tag_cloud
     @tags = Item.tag_counts
