@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
+  PER_PAGE = 10
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.all
+    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE
     tag_cloud
 
     respond_to do |format|
@@ -85,7 +86,13 @@ class ItemsController < ApplicationController
   end
 
   def tag
-    @items = Item.find_tagged_with(params[:id])
+    redirect_to :action => :index unless params[:id]
+
+    @items = Item.paginate_by_tag params[:id],:order => 'created_at ',:page => params[:page],:per_page => PER_PAGE
+
+
+    # @items = Item.find_tagged_with(params[:id])
+    # paginate @items
     tag_cloud
 
     respond_to do |format|
