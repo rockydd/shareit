@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE
+    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc"
     tag_cloud
 
     respond_to do |format|
@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
   def tag
     redirect_to :action => :index unless params[:id]
 
-    @items = Item.paginate_by_tag params[:id],:order => 'created_at ',:page => params[:page],:per_page => PER_PAGE
+    @items = Item.paginate_by_tag params[:id],:order => 'created_at desc ',:page => params[:page],:per_page => PER_PAGE
 
 
     # @items = Item.find_tagged_with(params[:id])
