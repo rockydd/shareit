@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
     @title = "Let's share"
+    @item = Item.new
     @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc"
     tag_cloud
 
@@ -90,7 +91,7 @@ class ItemsController < ApplicationController
 
   def tag
     redirect_to :action => :index unless params[:id]
-
+    @item = Item.new
     @items = Item.paginate_by_tag params[:id],:order => 'created_at desc ',:page => params[:page],:per_page => PER_PAGE
 
 

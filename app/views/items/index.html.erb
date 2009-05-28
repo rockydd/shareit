@@ -1,4 +1,6 @@
 <% title "Let's Share" %>
+
+
   <div class="item_list">
     <table width="100%">
       <% @items.each do |item| %>
@@ -26,14 +28,21 @@
     <%= will_paginate @items %>
   </div>
 
-  <%= link_to 'I want to Share something', new_item_path %>
-  <div id="tag_cloud">
-    <h2> Tag Cloud:</h2>
-    <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
-    <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-    <% end %>
-  </div>
+  <div id="side_bar">
+    <div id="tag_cloud">
+      <h2> Tag Cloud:</h2>
+      <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+      <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+      <% end %>
+    </div>
 
+      <h2> I have sth. to share: </h2>
+    <div id="share_form">
+
+      <%= render :partial => 'form' %>
+    </div>
+
+  </div>
 
   <div id="footer"/>
 

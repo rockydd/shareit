@@ -120,9 +120,19 @@ a {
   vertical-align: top;
 }
 
-#tag_cloud {
+#side_bar {
   float: left;
   width: 30%;
+}
+#tag_cloud {
+}
+#share_form {
+  border: double 4px green;
+  padding-left: 10px;
+}
+#description_input {
+  height: 50px;
+  width: 95%;
 }
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }
