@@ -1,0 +1,19 @@
+<% form_for @item, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.file_field :attachment %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label 'Tags (Delimiter = ,)' %><br/>
+    <%= f.text_field :tag_list %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :id => 'description_input' %>
+  </p>
+  <p><%= f.submit "Share it!" %></p>
+<% end %>
