@@ -7,6 +7,12 @@ class Item < ActiveRecord::Base
       attachment.url(:small)
     elsif attachment_content_type =~ /\/pdf$/
       attachment.url(:small).split("/")[0..-2].join("/") + "/thumb.png"
+    elsif attachment_content_type =~ /x-msdos-program$/
+      "/images/windows.png"
+    elsif attachment_content_type =~ /zip$/ || attachment_file_name =~ /(tar|\.tgz)$/
+      "/images/zip.png"
+    else
+      "/images/tux.png"
     end
   end
 
