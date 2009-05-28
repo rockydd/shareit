@@ -5,6 +5,12 @@
   </div>
 </p>
 <p>
+  <% if @item.creator %>
+  shared by: <i><%= @item.creator.username %> </i>
+  <% end %>
+</p>
+
+<p>
   <%= @item.attachment_file_name %>
   <%= link_to 'Download', @item.attachment.url %>
 </p>

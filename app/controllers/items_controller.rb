@@ -44,6 +44,8 @@ class ItemsController < ApplicationController
   # POST /items.xml
   def create
     @item = Item.new(params[:item])
+    @item.creator = current_user if current_user
+
 
     respond_to do |format|
       if @item.save

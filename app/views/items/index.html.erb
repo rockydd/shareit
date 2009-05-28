@@ -8,6 +8,11 @@
         </td>
         <td class="detail">
           <h3><%= link_to h(item.name), item_path(item) %></h3>
+          <p>
+            <% if item.creator %>
+            shared by: <i><%= item.creator.username %> </i>
+            <% end %>
+          </p>
           <%= h item.description %>
         </td>
       </tr>
