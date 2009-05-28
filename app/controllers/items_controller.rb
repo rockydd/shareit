@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   def index
     @title = "Let's share"
     @item = Item.new
-    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc"
+    search_conditions = ["name like ? or description like ?", "%#{params[:search]}%","%#{params[:search]}%"] if params[:search]
+    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc", :conditions => search_conditions
     tag_cloud
 
     respond_to do |format|
