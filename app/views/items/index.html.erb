@@ -7,10 +7,10 @@
       <% @items.each do |item| %>
       <tr>
         <td class="thumb">
-          <%= image_tag item.thumb_url %>
+          <%=link_to image_tag(item.thumb_url), item_path(item) %>
         </td>
         <td class="detail">
-          <h3><%= h item.name %></h3>
+          <h3><%= link_to h(item.name), item_path(item) %></h3>
           <%= h item.description %>
         </td>
       </tr>

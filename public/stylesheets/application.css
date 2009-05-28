@@ -118,7 +118,12 @@ a {
 .css3 { font-size: 1.4em; }
 .css4 { font-size: 1.6em; }
 
-
+.div_item_picture {
+  horizon-align: center;
+}
+.item_picture {
+  max-width: 100%;
+}
 #footer {
   clear: both;
 }
