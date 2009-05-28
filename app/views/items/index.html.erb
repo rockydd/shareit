@@ -1,8 +1,9 @@
 <h1>Listing items</h1>
 
-<div id="main">
+
+
   <div class="item_list">
-    <table>
+    <table width="100%">
       <% @items.each do |item| %>
       <tr>
         <td class="thumb">
@@ -13,19 +14,25 @@
           <%= h item.description %>
         </td>
       </tr>
+      <tr>
+        <td colspan='2'>
+          <hr width='100%'/>
+        </td>
+      </tr>
       <% end %>
     </table>
     <%= will_paginate @items %>
   </div>
 
+  <%= link_to 'I want to Share something', new_item_path %>
   <div id="tag_cloud">
-    <b> Tag Cloud:</b>
+    <h2> Tag Cloud:</h2>
     <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
     <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
     <% end %>
   </div>
 
-  <br/>
-  <%= link_to 'New item', new_item_path %>
-</div>
+
+  <div id="footer"/>
+
 
