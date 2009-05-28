@@ -4,22 +4,15 @@
     <%= link_to image_tag(item_picture(@item),:class => 'item_picture'), @item.attachment.url %>
   </div>
 </p>
-<p>
-  <% if @item.creator %>
-  shared by: <i><%= @item.creator.username %> </i>
-  <% end %>
-</p>
 
 <p>
   <%= @item.attachment_file_name %>
   <%= link_to 'Download', @item.attachment.url %>
 </p>
 <p>
-
-  <b>Description:</b>
-  <div class="description">
-    <%=h @item.description %>
-  </div>
+  <% if @item.creator %>
+  shared by: <i><%= @item.creator.username %> </i>
+  <% end %>
 </p>
 
 <p>
@@ -30,6 +23,14 @@
   <% end %>
 
 </p>
+<p>
+
+  <b>Description:</b>
+  <div class="description">
+    <pre><%=h @item.description %></pre>
+  </div>
+</p>
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

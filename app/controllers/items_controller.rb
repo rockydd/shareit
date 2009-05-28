@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  PER_PAGE = 10
+  PER_PAGE = 20
   # GET /items
   # GET /items.xml
   def index

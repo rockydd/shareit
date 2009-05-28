@@ -105,6 +105,29 @@ a {
 .item {
 
 }
+.dl_item {
+  border-bottom: solid 2px green;
+  float: left;
+  padding: 5px 5px 5px 5px;
+  text-align: center;
+  height: 180px;
+}
+.dt_item {
+  vertical-align: middle;
+  height: 150px;
+  width: 150px;
+
+}
+.dd_item{
+  padding-top: 5px;
+}
+
+#page_link {
+  clear: both;
+  float: right;
+  padding-right: 10px;
+}
+
 .thumb{
   width: 150px;
   height: 150px;

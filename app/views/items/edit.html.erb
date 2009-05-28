@@ -8,8 +8,12 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label 'Tags (Delimiter = ,)' %><br/>
+    <%= f.text_field :tag_list %>
+  </p>
+  <p>
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description, :id => 'description_input' %>
   </p>
   <p>
     <%= f.submit 'Update' %>
