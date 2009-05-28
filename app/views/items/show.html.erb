@@ -1,7 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%=h @item.name %>
-</p>
+<% title @item.name %>
 <p>
   <div class='div_item_picture'>
     <%= link_to image_tag(item_picture(@item),:class => 'item_picture'), @item.attachment.url %>
@@ -17,8 +14,9 @@
   <%= image_tag 'tag.png',:width => 20%>
   <b>tagged with:</b>
   <% for tag in @item.tags %>
-  <%= tag.name %>
+  <%= link_to tag.name, { :action => :tag, :id => tag.name} %>
   <% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

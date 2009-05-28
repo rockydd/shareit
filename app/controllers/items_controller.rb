@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
+    @title = "Let's share"
     @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc"
     tag_cloud
 
