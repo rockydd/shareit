@@ -95,7 +95,7 @@ a {
 #main{
 /*   clear: right; */
 }
-.item_list{
+#item_list{
   float: left;
   width: 70%;
 }

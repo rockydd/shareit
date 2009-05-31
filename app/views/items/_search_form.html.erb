@@ -1,6 +1,14 @@
 <% form_tag items_path, :method => :get do  %>
+<div id="item_list2" >
+
+</div>
   <p>
+
   <%= text_field_tag :search,params[:search] %>
   <%= submit_tag :search, :name => nil  %>
+  <%= observe_field(:search,  :frequency => 2,
+    :update => :item_list, :url =>
+    { :controller => :items, :action=> :ajax_search },
+    :with => " 'isearch=' + escape(value)") %>
   </p>
 <% end %>

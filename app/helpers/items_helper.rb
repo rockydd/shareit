@@ -6,4 +6,9 @@ module ItemsHelper
       return item.thumb_url
     end
   end
+
+  def trim_string(string)
+    return  string.first(13)+"..."  if(string.size > 15)
+    string
+  end
 end

@@ -1,0 +1,16 @@
+
+      <% @items.each do |item| %>
+      <div class="dl_item">
+        <div class="dt_item">
+          <table width='100%' height='100%'><tr><td vertical-align='middle'><%=link_to image_tag(item.thumb_url), item_path(item) %></td></tr></table>
+        </div>
+        <div class="dd_item">
+          <%= link_to h(trim_string(item.name)), item_path(item) %>
+        </div>
+      </div>
+      <% end %>
+      <br/>
+      <div id="page_link">
+        <%= will_paginate @items %>
+      </div>
+
