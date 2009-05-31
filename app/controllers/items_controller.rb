@@ -52,7 +52,12 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        flash[:notice] = 'Item was successfully created.'
+        if @item.name.nil? || @item.name.empty?
+          @item.name = @item.attachment_file_name
+          @item.save
+        end
+
+        flash[:notice] = 'Item was successfully created. Thanks for your sharing!'
         format.html { redirect_to(@item) }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else

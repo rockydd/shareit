@@ -8,6 +8,7 @@ module ItemsHelper
   end
 
   def trim_string(string)
+    return unless string
     return  string.first(13)+"..."  if(string.size > 15)
     string
   end
