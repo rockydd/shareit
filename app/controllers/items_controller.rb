@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
     search_conditions = ["name like ? or description like ?", "%#{params[:isearch]}%","%#{params[:isearch]}%"] if params[:isearch]
     @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc", :conditions => search_conditions
 
-    render :layout => false
+    render :partial => 'item_list'
   end
 private
   def tag_cloud
