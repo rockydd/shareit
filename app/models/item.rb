@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   def thumb_url
     if attachment_content_type =~ /^image/
       attachment.url(:small)
-    elsif attachment_content_type =~ /\/pdf$/
+    elsif attachment_content_type =~ /pdf$/
       attachment.url(:small).split("/")[0..-2].join("/") + "/thumb.png"
     elsif attachment_content_type =~ /x-msdos-program$/
       "/images/windows.png"
@@ -24,7 +24,7 @@ class Item < ActiveRecord::Base
   end
 
   def after_save
-    if attachment_content_type =~ /\/pdf$/
+    if attachment_content_type =~ /pdf$/
       path = File.dirname(attachment.path)
       thumb_path = path.split("/")[0..-2].join("/") + "/small/thumb.png"
       src = attachment.path+"[0]"
