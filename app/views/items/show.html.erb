@@ -6,6 +6,9 @@
 </p>
 
 <p>
+  <%= link_to 'Dig it', dig_item_path(@item),:method => :put %>
+  [<%= h @item.position %>]
+<p>
   <%= @item.attachment_file_name %>
   <%= link_to 'Download', @item.attachment.url %>
 </p>

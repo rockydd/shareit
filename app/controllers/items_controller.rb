@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     @title = "Let's share"
     @item = Item.new
     search_conditions = ["name like ? or description like ?", "%#{params[:search]}%","%#{params[:search]}%"] if params[:search]
-    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc", :conditions => search_conditions
+    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "position desc,created_at desc", :conditions => search_conditions
 
     tag_cloud
 
@@ -99,7 +99,7 @@ class ItemsController < ApplicationController
   def tag
     redirect_to :action => :index unless params[:id]
     @item = Item.new
-    @items = Item.paginate_by_tag params[:id],:order => 'created_at desc ',:page => params[:page],:per_page => PER_PAGE
+    @items = Item.paginate_by_tag params[:id],:order => 'position desc, created_at desc ',:page => params[:page],:per_page => PER_PAGE
 
 
     # @items = Item.find_tagged_with(params[:id])
@@ -115,9 +115,17 @@ class ItemsController < ApplicationController
 
   def ajax_search
     search_conditions = ["name like ? or description like ?", "%#{params[:isearch]}%","%#{params[:isearch]}%"] if params[:isearch]
-    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "created_at desc", :conditions => search_conditions
+    @items = Item.paginate :page => params[:page], :per_page => PER_PAGE, :order => "position desc, created_at desc", :conditions => search_conditions
 
     render :partial => 'item_list'
+  end
+
+  def dig
+    @item = Item.find(params[:id])
+    @item.position = 0 if @item.position.nil?
+    @item.update_attribute :position, @item.position+1
+    redirect_to :action => "show",:id=>@item.id
+
   end
 private
   def tag_cloud
