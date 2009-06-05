@@ -1,0 +1,11 @@
+<table>
+  <% @ftpservers.each do |ftpserver| %>
+  <tr>
+    <td>
+    <%= link_to "#{ftpserver.url}", ftpserver.access_url, {'target'=>'_blank'}%>
+    </td>
+    <td><%= link_to ftpserver.maintainer %></td>
+    <td><%= link_to 'Destroy', ftpserver, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+</table>
