@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090531124239) do
+ActiveRecord::Schema.define(:version => 20090531193335) do
+
+  create_table "ftpservers", :force => true do |t|
+    t.string   "url"
+    t.string   "dsp"
+    t.string   "user"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "maintainer"
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name"

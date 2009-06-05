@@ -127,6 +127,7 @@ class ItemsController < ApplicationController
     redirect_to :action => "show",:id=>@item.id
 
   end
+
 private
   def tag_cloud
     @tags = Item.tag_counts
