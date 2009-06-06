@@ -1,0 +1,9 @@
+one:
+  user_id: 1
+  event: MyString
+  occur_at: 2009-06-06 09:57:01
+
+two:
+  user_id: 1
+  event: MyString
+  occur_at: 2009-06-06 09:57:01

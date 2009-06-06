@@ -1,0 +1,11 @@
+<% title "Events" %>
+
+  <% for event in @events %>
+  <div class='event_item'>
+    <b><%=h event.user ? event.user.username : 'anonymous' %></b>
+    <%= event.event %>
+    <%= time_ago_in_words( event.occur_at ) + ' ago.' %>
+  </div>
+  <% end %>
+
+

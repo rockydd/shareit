@@ -1,0 +1,20 @@
+<% title "Event" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @event.user_id %>
+</p>
+<p>
+  <strong>Event:</strong>
+  <%=h @event.event %>
+</p>
+<p>
+  <strong>Occur At:</strong>
+  <%=h @event.occur_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_event_path(@event) %> |
+  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", events_path %>
+</p>
