@@ -10,7 +10,11 @@
   <body>
     <div id="container">
       <div id="navbar">
-        <div id="navlinks"><%= link_to 'Home',"/items" %></div>
+        <div id="navlinks">
+          <%= link_to 'Home',"/items" %>
+          <%= link_to_unless_current 'Events',"/events" %>
+        </div>
+
         <div id="session_info">
           <% if logged_in? %>
           Welcome <b> <%= current_user.username %></b>! Not you?

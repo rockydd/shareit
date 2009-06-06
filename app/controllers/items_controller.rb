@@ -57,6 +57,10 @@ class ItemsController < ApplicationController
           @item.save
         end
 
+        Event.create(:user_id => current_user && current_user.id,
+                     :event => "Shared <a href='/items/#{@item.id}'>#{@item.name}</a>",
+                     :occur_at => @item.created_at)
+
         flash[:notice] = 'Item was successfully created. Thanks for your sharing!'
         format.html { redirect_to(@item) }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
