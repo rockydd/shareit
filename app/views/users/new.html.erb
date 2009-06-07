@@ -2,7 +2,7 @@
 
 <p>Already have an account? <%= link_to "Log in", login_path %>.</p>
 
-<% form_for @user do |f| %>
+<% form_for @user,:html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :username %><br />
@@ -20,5 +20,7 @@
     <%= f.label :password_confirmation, "Confirm Password" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+<p><%= f.file_field :avatar %></p>
+
   <p><%= f.submit "Sign up" %></p>
 <% end %>
