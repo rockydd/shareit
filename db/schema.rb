@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090607031650) do
+ActiveRecord::Schema.define(:version => 20090607112554) do
 
   create_table "events", :force => true do |t|
     t.integer  "user_id"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20090607031650) do
     t.datetime "attachment_updated_at"
     t.integer  "creator_id"
     t.integer  "position"
+    t.integer  "digged"
+    t.integer  "buried"
   end
 
   create_table "taggings", :force => true do |t|

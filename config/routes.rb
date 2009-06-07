@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :items, :member => { :dig => :put}
+  map.resources :items, :member => { :dig => :put, :bury => :put}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -7,7 +7,9 @@
 
 <p>
   <%= link_to 'Dig it', dig_item_path(@item),:method => :put %>
-  [<%= h @item.position %>]
+  [<%= h @item.digged %>]
+  <%= link_to 'Bury it', bury_item_path(@item),:method => :put %>
+  [<%= h @item.buried %>]
 <p>
   <%= @item.attachment_file_name %>
   <%= link_to 'Download', @item.attachment.url %>

@@ -125,14 +125,35 @@ class ItemsController < ApplicationController
   end
 
   def dig
-    @item = Item.find(params[:id])
-    @item.position = 0 if @item.position.nil?
-    @item.update_attribute :position, @item.position+1
+    change_position(:dig)
     redirect_to :action => "show",:id=>@item.id
+  end
 
+  def bury
+    change_position(:bury)
+    redirect_to :action => "show",:id=>@item.id
   end
 private
   def tag_cloud
     @tags = Item.tag_counts
+  end
+
+  def change_position(action)
+    @item = Item.find(params[:id])
+    @item.position = 0 if @item.position.nil?
+    position = @item.position || 0
+    digged = @item.digged || 0
+    buried = @item.buried || 0
+
+    if action == :dig
+      position += 1
+      digged += 1
+    elsif action == :bury
+      position -= 1
+      buried += 1
+    end
+
+    @item.update_attributes( @item.attributes.merge(:position => position, :digged => digged, :buried => buried))
+
   end
 end
