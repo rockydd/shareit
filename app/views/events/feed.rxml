@@ -1,0 +1,29 @@
+xml.instruct!
+xml.rss "version" => "2.0",
+"xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+  xml.channel do
+    xml.title ' Sharing Events'
+    xml.link url_for(:only_path => false,
+                     :controller => 'events' ,
+                     :action => 'index' )
+    xml.pubDate CGI.rfc1123_date(@events.first.occur_at)
+    xml.description h("Recipes created for and by guys who shouldn' t be cooking.")
+    @events.each do |event|
+      xml.item do
+        xml.title event.username + " shared " + event.item.name
+
+        xml.link url_for(:only_path => false,
+                         :controller => 'items' ,
+                         :action => 'show' ,
+                         :id => event.item)
+        xml.description h(event.description).gsub("\n","<br/>")
+        xml.pubDate CGI.rfc1123_date(event.occur_at)
+        xml.guid url_for(:only_path => false,
+                         :controller => 'items' ,
+                         :action => 'show' ,
+                         :id => event.item)
+        xml.author h(event.username)
+      end
+    end
+  end
+end

@@ -58,6 +58,7 @@ class ItemsController < ApplicationController
         end
 
         Event.create(:user_id => current_user && current_user.id,
+                     :item_id => @item.id,
                      :event => "Shared <a href='/items/#{@item.id}'>#{@item.name}</a>",
                      :occur_at => @item.created_at)
 

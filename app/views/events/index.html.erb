@@ -3,8 +3,9 @@
   <% for event in @events %>
   <div class='event_item'>
     <%= image_tag (event.user && event.user.avatar_url) || "tux.pg" %>
-    <b><%=h event.user ? event.user.username : 'anonymous' %></b>
-    <%= event.event %>
+    <b><%=h event.username %></b>
+    shared
+    <%= link_to (event.item && event.item.name), event.item %>
     <%= time_ago_in_words( event.occur_at ) + ' ago.' %>
   </div>
   <% end %>

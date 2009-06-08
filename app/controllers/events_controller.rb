@@ -3,6 +3,13 @@ class EventsController < ApplicationController
     @events = Event.all(:order => 'occur_at desc')
   end
 
+  def feed
+    @events = Event.all(:order => 'occur_at desc',
+                         :limit => 15)
+    headers["Content-Type"] = "application/rss+xml"
+    render :layout => false
+
+  end
   def show
     @event = Event.find(params[:id])
   end
