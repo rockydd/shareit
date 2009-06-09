@@ -8,4 +8,14 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  private
+  def tweet(message)
+    call_rake(:tweet,{ :TWEET=>message})
+  end
+  def call_rake(task, options = { })
+    options[:rails_env] = Rails.env
+    args = options.map { |n,v| "#{n.to_s.upcase}='#{v}'"}
+    system "/usr/bin/rake #{task} #{args.join(' ')} >> #{Rails.root}/log/rake.log &"
+  end
 end
