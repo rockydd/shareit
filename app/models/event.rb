@@ -10,4 +10,8 @@ class Event < ActiveRecord::Base
     username + " shared " + item.name + "\n\n" +
     item.description
   end
+
+  def summary
+    username + " shared " + item.name
+  end
 end

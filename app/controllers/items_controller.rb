@@ -57,10 +57,12 @@ class ItemsController < ApplicationController
           @item.save
         end
 
-        Event.create(:user_id => current_user && current_user.id,
+        event = Event.create(:user_id => current_user && current_user.id,
                      :item_id => @item.id,
                      :event => "Shared <a href='/items/#{@item.id}'>#{@item.name}</a>",
                      :occur_at => @item.created_at)
+
+        Tweet.tweet(event.summary + " http://#{request.host}" + request.port_string + "/items/#{@item.id}")
 
         flash[:notice] = 'Item was successfully created. Thanks for your sharing!'
         format.html { redirect_to(@item) }
