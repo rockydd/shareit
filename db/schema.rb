@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20090607215150) do
     t.integer  "item_id"
   end
 
+  create_table "ftpservers", :force => true do |t|
+    t.string   "url"
+    t.string   "dsp"
+    t.string   "user"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "maintainer"
+  end
+
   create_table "items", :force => true do |t|
     t.string   "name"
     t.string   "description"

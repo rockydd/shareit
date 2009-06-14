@@ -13,8 +13,9 @@
     <div id="container">
       <div id="navbar">
         <div id="navlinks">
-          <%= link_to 'Home',"/items" %>
-          <%= link_to_unless_current 'Events',"/events" %>
+          <%= link_to 'Home',"/items" %>|
+          <%= link_to_unless_current 'Events',"/events" %>|
+          <%= link_to 'FTP Servers', '/ftpservers'%>
         </div>
 
         <div id="session_info">

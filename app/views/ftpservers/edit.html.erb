@@ -1,0 +1,12 @@
+<h1>Editing ftpserver</h1>
+
+<% form_for(@ftpserver) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @ftpserver %> |
+<%= link_to 'Back', ftpservers_path %>

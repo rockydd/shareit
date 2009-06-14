@@ -1,0 +1,28 @@
+<% form_for @ftpserver do |f| %>
+  <%= f.error_messages %>
+    <p>
+    <%= f.label 'Server URL' %><br />
+
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :dsp %>
+  </p>
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label 'Maintainer' %><br />
+    <%= f.text_field :maintainer %>
+  </p>
+
+  <p>
+    <%= f.submit 'Share' %>
+  </p>
+<% end %>

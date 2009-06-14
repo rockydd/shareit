@@ -9,6 +9,12 @@
     <div id="search_form">
       <%= render :partial => 'search_form' %>
     </div>
+    <div id="twitter">
+      <%= link_to image_tag('twitter.png'), 'http://twitter.com/letshareit' %>
+    </div>
+    <div id="feeds">
+      <%= link_to image_tag('feed.png') + ' Subscribe sharings',:controller => 'events', :action => 'feed' %>
+    </div>
     <div id="tag_cloud">
       <h2> Tag Cloud:</h2>
       <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
